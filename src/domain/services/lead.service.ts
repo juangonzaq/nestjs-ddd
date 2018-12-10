@@ -3,7 +3,7 @@ import { CreateLeadDto } from '../dto/create-lead.dto';
 import { Lead } from '../entities/lead.entity';
 
 @Injectable()
-export class LeadsService {
+export class LeadService {
   constructor(
     @Inject('LeadsRepository') private readonly leadRepository: typeof Lead,
   ) {}
@@ -11,7 +11,7 @@ export class LeadsService {
   async create(createLeadDto: CreateLeadDto): Promise<Lead> {
     const lead = new Lead();
     lead.latitud = createLeadDto.latitud;
-    lead.longitud = CreateLeadDto.longitud;
+    lead.longitud = createLeadDto.longitud;
     lead.code = createLeadDto.code;
 
     return await lead.save();

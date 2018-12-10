@@ -10,9 +10,9 @@ export const databaseProviders = [
         dialect: 'mysql',
         host: 'localhost',
         port: 3306,
-        username: 'root',
-        password: 'root',
-        database: 'test',
+        username: 'homestead',
+        password: 'secret',
+        database: 'seek_mass',
       });
       sequelize.addModels([Lead]);
       await sequelize.sync();
