@@ -2,7 +2,7 @@ import { Module, NestModule, MiddlewareConsumer, RequestMethod } from '@nestjs/c
 
 import { DatabaseModule } from '../database/database.module';
 import { LeadController } from '../../app/controllers/lead.controller';
-import { leadProvider } from '../../infrastructure/providers/lead.provider';
+import { LeadProvider } from '../../infrastructure/providers/lead.provider';
 import { LeadService } from '../../domain/services/lead.service';
 
 //import { UserIdMiddleware } from './middlewares/userbyId.middleware';
@@ -13,10 +13,10 @@ import { LeadService } from '../../domain/services/lead.service';
   imports: [DatabaseModule],
   controllers: [LeadController],
   providers: [
-    LeadService, ...leadProvider
+    LeadService, ...LeadProvider
   ],
   exports: [
-    ...leadProvider
+    ...LeadProvider
   ]
 })
 export class LeadModule implements NestModule{

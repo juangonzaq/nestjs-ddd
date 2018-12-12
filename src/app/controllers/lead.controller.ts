@@ -11,9 +11,10 @@ export class LeadController {
   async create(@Body() createLeadDto: CreateLeadDto) {
     await this.leadService.create(createLeadDto);
   }
-
+/*
   @Get()
   async findAll(): Promise<Lead[]> {
     return await this.leadService.findAll();
   }
+  */
 }
