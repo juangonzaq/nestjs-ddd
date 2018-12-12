@@ -5,15 +5,11 @@ import { Model } from 'sequelize-typescript';
 
 @Injectable()
 export class LeadService {
-  /*
+ 
   constructor(
     @Inject('LeadRepository') private readonly leadRepository: typeof Lead) {}
-  */
- constructor(
-  private readonly leadRepository: Model<Lead>) {
-    console.log(leadRepository);
-  }
-
+ 
+ 
   async create(createLeadDto: CreateLeadDto): Promise<Lead> {
     const lead = new Lead();
     lead.latitud = createLeadDto.latitud;
@@ -22,9 +18,8 @@ export class LeadService {
 
     return await lead.save();
   }
-/*
+
   async findAll(): Promise<Lead[]> {
     return await this.leadRepository.findAll<Lead>();
   }
-  */
 }

@@ -5,19 +5,15 @@ import { LeadController } from '../../app/controllers/lead.controller';
 import { LeadProvider } from '../../infrastructure/providers/lead.provider';
 import { LeadService } from '../../domain/services/lead.service';
 
-//import { UserIdMiddleware } from './middlewares/userbyId.middleware';
-//  Middlewares
-//import { bodyValidatorMiddleware } from '../auth/middlewares/body-validator.middleware';
-
 @Module({
   imports: [DatabaseModule],
   controllers: [LeadController],
   providers: [
-    LeadService, ...LeadProvider
+    LeadService, ...LeadProvider,
   ],
   exports: [
-    ...LeadProvider
-  ]
+    ...LeadProvider,
+  ],
 })
 export class LeadModule implements NestModule{
   public configure(consumer: MiddlewareConsumer) {

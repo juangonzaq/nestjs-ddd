@@ -5,7 +5,7 @@ import { LeadModule } from './infrastructure/modules/lead.module';
 
 @Module({
   imports: [
-    LeadModule
+    LeadModule,
   ],
   controllers: [AppController],
   providers: [AppService],
