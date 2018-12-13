@@ -5,7 +5,7 @@ import * as admin from 'firebase-admin';
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {
-    var serviceAccount = require("seek-83298-firebase-adminsdk-0pogf-639525d314.json");
+    const serviceAccount = require("seek-83298-firebase-adminsdk-0pogf-639525d314.json");
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
       databaseURL: "https://seek-83298.firebaseio.com"
@@ -15,7 +15,7 @@ export class AppController {
   @Get()
   root(): string {
     const db = admin.database();
-    var user = {
+    const user = {
       name: 'Angie',
       lastname: 'Zapata',
       email: 'juangonzqq@gmail.com'

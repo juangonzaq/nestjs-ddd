@@ -14,6 +14,7 @@ export class LeadController {
 
   @Get()
   async findAll(): Promise<Lead[]> {
+    console.log(process.env.AWS_REGION);
     return await this.leadService.findAll();
   }
 }
