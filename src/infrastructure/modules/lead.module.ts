@@ -4,6 +4,7 @@ import { DatabaseModule } from '../database/database.module';
 import { LeadController } from '../../app/controllers/lead.controller';
 import { LeadProvider } from '../../infrastructure/providers/lead.provider';
 import { LeadService } from '../../domain/services/lead.service';
+import { LoggerMiddleware } from '../../app/middlewares/logger.middleware';
 
 @Module({
   imports: [DatabaseModule],
@@ -16,15 +17,9 @@ import { LeadService } from '../../domain/services/lead.service';
   ],
 })
 export class LeadModule implements NestModule{
-  public configure(consumer: MiddlewareConsumer) {
-    /*
+  configure(consumer: MiddlewareConsumer) {
     consumer
-      .apply(bodyValidatorMiddleware)
-      .forRoutes('users/signup');
-
-    consumer.apply(UserIdMiddleware)
-      .forRoutes({ path: 'users/:id', method: RequestMethod.ALL });
-      //  users id calling middleware for findById users before run another methods like "delete/update/read"
-    */
+      .apply(LoggerMiddleware)
+      .forRoutes('lead');
   }
 }
