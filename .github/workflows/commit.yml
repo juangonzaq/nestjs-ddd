@@ -1,0 +1,50 @@
+name: "CI pipeline for project"
+
+on:
+  push:
+    branches:
+      - "master"
+  pull_request:
+    branches:
+      - "master"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x, 18.x]
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+    - name: Use Node.js $
+      uses: actions/setup-node@v3
+      env:
+        FORCE_COLOR: 0
+      with:
+        node-version: $
+        cache: 'npm'
+    - name: Start CI process
+      run: npm ci
+    - name: Build project(if present)
+      run: npm run build --if-present
+  check_formats:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+    - name: Check Format By Prettier
+      run: npm run format
+    - name: Check Linter Rules by TsLint
+      run: npm run lint
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+    - name: Check Tests Coverage
+      run: npm run test:cov
+    - name: Check Unit Tests
+      run: npm run test
+    - name: Check E2E tests
+      run: npm run test:e2e
